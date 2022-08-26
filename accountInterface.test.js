@@ -10,9 +10,10 @@ describe('AccountInterface', () => {
   });
 
   describe('new account has been made, no deposits/withdrawals', () => {
-    const account = new Account();
-    const statementFormatter = new StatementFormatter();
-    const accountInterface = new AccountInterface(account, statementFormatter);
+    const accountInterface = new AccountInterface(
+      new Account(),
+      new StatementFormatter()
+    );
 
     it('returns balance as 0', () => {
       expect(accountInterface.getBalance()).toEqual('Your balance is now 0.');
