@@ -13,7 +13,7 @@ class AccountInterface {
   }
 
   getBalance() {
-    return `Your balance is now ${this.account.balance}`;
+    return `Your balance is now ${this.account.balance}.`;
   }
 
   printStatement() {
