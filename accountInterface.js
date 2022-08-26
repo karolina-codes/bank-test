@@ -4,16 +4,16 @@ class AccountInterface {
     this.formatter = formatter;
   }
 
+  viewBalance() {
+    return `Your balance is ${this.account.balance}.`;
+  }
+
   credit(amount) {
     this.account.deposit(amount);
   }
 
   debit(amount) {
     this.account.withdraw(amount);
-  }
-
-  getBalance() {
-    return `Your balance is now ${this.account.balance}.`;
   }
 
   printStatement() {

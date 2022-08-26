@@ -1,27 +1,40 @@
 class Account {
-  #balance;
-
   constructor() {
-    this.#balance = 0;
-    this.transactions = [];
+    let _balance = 0;
+    let _transactions = [];
+
+    this.setBalance = (amount) => (_balance = amount);
+    this.getBalance = () => _balance;
+
+    this.addTransaction = (transactionObject) =>
+      _transactions.push(transactionObject);
+    this.getTransactions = () => _transactions;
+  }
+
+  get balance() {
+    return this.getBalance();
+  }
+
+  get transactions() {
+    return this.getTransactions();
   }
 
   #logTransaction(credit, debit) {
-    this.transactions.push({
+    this.addTransaction({
       date: new Date(),
       credit: credit.toFixed(2),
       debit: debit.toFixed(2),
-      balance: this.#balance.toFixed(2),
+      balance: this.getBalance().toFixed(2),
     });
   }
 
   deposit(amount) {
-    this.#balance += amount;
+    this.setBalance(this.getBalance() + amount);
     this.#logTransaction(amount, 0);
   }
 
   withdraw(amount) {
-    this.#balance -= amount;
+    this.setBalance(this.getBalance() - amount);
     this.#logTransaction(0, amount);
   }
 }
