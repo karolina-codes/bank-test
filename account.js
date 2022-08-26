@@ -1,6 +1,8 @@
 class Account {
+  #balance;
+
   constructor() {
-    this.balance = 0;
+    this.#balance = 0;
     this.transactions = [];
   }
 
@@ -9,17 +11,17 @@ class Account {
       date: new Date(),
       credit: credit.toFixed(2),
       debit: debit.toFixed(2),
-      balance: this.balance.toFixed(2),
+      balance: this.#balance.toFixed(2),
     });
   }
 
   deposit(amount) {
-    this.balance += amount;
+    this.#balance += amount;
     this.#logTransaction(amount, 0);
   }
 
   withdraw(amount) {
-    this.balance -= amount;
+    this.#balance -= amount;
     this.#logTransaction(0, amount);
   }
 }
