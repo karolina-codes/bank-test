@@ -6,27 +6,26 @@ class StatementFormatter {
   #formatTransaction(transaction) {
     if (transaction === 0) {
       return '';
-    } else {
-      return transaction.toFixed(2);
     }
+
+    return transaction.toFixed(2);
   }
 
   printStatement(log) {
-    let formattedStatement = 'date || credit || debit || balance\n';
+    let formattedStatement = ['date || credit || debit || balance'];
     const transactions = log.reverse();
 
     for (let i = 0; i < transactions.length; i++) {
       const transaction = transactions[i];
 
-      formattedStatement = formattedStatement.concat(
+      formattedStatement.push(
         this.#formatDate(transaction.date) +
           ' || ' +
           this.#formatTransaction(transaction.credit) +
           ' || ' +
           this.#formatTransaction(transaction.debit) +
           ' || ' +
-          this.#formatTransaction(transaction.balance) +
-          '\n'
+          this.#formatTransaction(transaction.balance)
       );
     }
 

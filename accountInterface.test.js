@@ -20,9 +20,9 @@ describe('AccountInterface', () => {
     });
 
     it('prints a statement', () => {
-      expect(accountInterface.printStatement()).toEqual(
-        'date || credit || debit || balance\n'
-      );
+      expect(accountInterface.printStatement()).toEqual([
+        'date || credit || debit || balance',
+      ]);
     });
   });
 
@@ -45,9 +45,11 @@ describe('AccountInterface', () => {
     });
 
     it('allows a user to print a statement', () => {
-      expect(accountInterface.printStatement()).toEqual(
-        'date || credit || debit || balance\n7/2/2022 ||  || 20.00 || 30.00\n7/2/2022 || 50.00 ||  || 50.00\n'
-      );
+      expect(accountInterface.printStatement()).toEqual([
+        'date || credit || debit || balance',
+        '7/2/2022 ||  || 20.00 || 30.00',
+        '7/2/2022 || 50.00 ||  || 50.00',
+      ]);
     });
   });
 });

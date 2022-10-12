@@ -19,8 +19,10 @@ describe('StatementFormatter', () => {
       },
     ];
 
-    expect(statementFormatter.printStatement(transactionLog)).toEqual(
-      'date || credit || debit || balance\n7/2/2022 ||  || 10.00 || 10.50\n7/2/2022 || 20.50 ||  || 20.50\n'
-    );
+    expect(statementFormatter.printStatement(transactionLog)).toEqual([
+      'date || credit || debit || balance',
+      '7/2/2022 ||  || 10.00 || 10.50',
+      '7/2/2022 || 20.50 ||  || 20.50',
+    ]);
   });
 });
