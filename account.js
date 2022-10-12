@@ -22,9 +22,9 @@ class Account {
   #logTransaction(credit, debit) {
     this.addTransaction({
       date: new Date(),
-      credit: credit.toFixed(2),
-      debit: debit.toFixed(2),
-      balance: this.getBalance().toFixed(2),
+      credit: credit,
+      debit: debit,
+      balance: this.getBalance(),
     });
   }
 

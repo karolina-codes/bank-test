@@ -8,10 +8,14 @@ class StatementFormatter {
     const transactions = log.reverse();
 
     for (let i = 0; i < transactions.length; i++) {
-      if (transactions[i].credit == 0.0) {
+      if (transactions[i].credit === 0) {
         transactions[i].credit = '';
-      } else if (transactions[i].debit == 0.0) {
+        transactions[i].debit = transactions[i].debit.toFixed(2);
+        transactions[i].balance = transactions[i].balance.toFixed(2);
+      } else if (transactions[i].debit === 0) {
         transactions[i].debit = '';
+        transactions[i].credit = transactions[i].credit.toFixed(2);
+        transactions[i].balance = transactions[i].balance.toFixed(2);
       }
 
       formattedStatement = formattedStatement.concat(

@@ -6,16 +6,16 @@ describe('StatementFormatter', () => {
     const statementFormatter = new StatementFormatter();
     const transactionLog = [
       {
-        balance: '20.50',
-        credit: '20.50',
+        balance: 20.5,
+        credit: 20.5,
         date: new Date('2022-02-07T00:00:00.000Z'),
-        debit: '0.00',
+        debit: 0.0,
       },
       {
-        balance: '10.50',
-        credit: '0.00',
+        balance: 10.5,
+        credit: 0.0,
         date: new Date('2022-02-07T00:00:00.000Z'),
-        debit: '10.00',
+        debit: 10.0,
       },
     ];
 

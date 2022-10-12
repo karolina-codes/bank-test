@@ -25,16 +25,16 @@ describe('Account', () => {
     it('logs the transactions', () => {
       const expectedArray = [
         {
-          balance: '20.50',
-          credit: '20.50',
+          balance: 20.5,
+          credit: 20.5,
           date: new Date('2022-08-20T00:00:00.000Z'),
-          debit: '0.00',
+          debit: 0,
         },
         {
-          balance: '10.50',
-          credit: '0.00',
+          balance: 10.5,
+          credit: 0,
           date: new Date('2022-08-20T00:00:00.000Z'),
-          debit: '10.00',
+          debit: 10,
         },
       ];
       expect(account.transactions).toEqual(expectedArray);
