@@ -1,6 +1,14 @@
 class StatementFormatter {
-  #currentDate(date) {
+  #formatDate(date) {
     return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  }
+
+  #formatTransaction(transaction) {
+    if (transaction === 0) {
+      return '';
+    } else {
+      return transaction.toFixed(2);
+    }
   }
 
   printStatement(log) {
@@ -8,24 +16,16 @@ class StatementFormatter {
     const transactions = log.reverse();
 
     for (let i = 0; i < transactions.length; i++) {
-      if (transactions[i].credit === 0) {
-        transactions[i].credit = '';
-        transactions[i].debit = transactions[i].debit.toFixed(2);
-        transactions[i].balance = transactions[i].balance.toFixed(2);
-      } else if (transactions[i].debit === 0) {
-        transactions[i].debit = '';
-        transactions[i].credit = transactions[i].credit.toFixed(2);
-        transactions[i].balance = transactions[i].balance.toFixed(2);
-      }
+      const transaction = transactions[i];
 
       formattedStatement = formattedStatement.concat(
-        this.#currentDate(transactions[i].date) +
+        this.#formatDate(transaction.date) +
           ' || ' +
-          transactions[i].credit +
+          this.#formatTransaction(transaction.credit) +
           ' || ' +
-          transactions[i].debit +
+          this.#formatTransaction(transaction.debit) +
           ' || ' +
-          transactions[i].balance +
+          this.#formatTransaction(transaction.balance) +
           '\n'
       );
     }
