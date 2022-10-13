@@ -11,8 +11,24 @@ class StatementFormatter {
     return transaction.toFixed(2);
   }
 
+  #calculateBalance(transactions) {
+    const balances = [];
+
+    for (let i = 0; i < transactions.length; i++) {
+      const currentBalance = balances[0] || 0;
+      const newBalance =
+        currentBalance + (transactions[i].credit - transactions[i].debit);
+
+      balances.unshift(newBalance);
+    }
+
+    return balances;
+  }
+
   printStatement(log) {
     let formattedStatement = ['date || credit || debit || balance'];
+
+    const balances = this.#calculateBalance(log);
     const transactions = log.reverse();
 
     for (let i = 0; i < transactions.length; i++) {
@@ -25,7 +41,7 @@ class StatementFormatter {
           ' || ' +
           this.#formatTransaction(transaction.debit) +
           ' || ' +
-          this.#formatTransaction(transaction.balance)
+          this.#formatTransaction(balances[i])
       );
     }
 
