@@ -25,13 +25,11 @@ describe('Account', () => {
     it('logs the transactions', () => {
       const expectedArray = [
         {
-          balance: 20.5,
           credit: 20.5,
           date: new Date('2022-08-20T00:00:00.000Z'),
           debit: 0,
         },
         {
-          balance: 10.5,
           credit: 0,
           date: new Date('2022-08-20T00:00:00.000Z'),
           debit: 10,

@@ -1,10 +1,6 @@
 class Account {
   constructor() {
-    let _balance = 0;
     let _transactions = [];
-
-    this.setBalance = (amount) => (_balance = amount);
-    this.getBalance = () => _balance;
 
     this.addTransaction = (transactionObject) =>
       _transactions.push(transactionObject);
@@ -12,7 +8,13 @@ class Account {
   }
 
   get balance() {
-    return this.getBalance();
+    let balance = 0;
+
+    for (let i = 0; i < this.transactions.length; i++) {
+      balance += this.transactions[i].credit - this.transactions[i].debit;
+    }
+
+    return balance;
   }
 
   get transactions() {
@@ -24,17 +26,14 @@ class Account {
       date: new Date(),
       credit: credit,
       debit: debit,
-      balance: this.getBalance(),
     });
   }
 
   deposit(amount) {
-    this.setBalance(this.getBalance() + amount);
     this.#logTransaction(amount, 0);
   }
 
   withdraw(amount) {
-    this.setBalance(this.getBalance() - amount);
     this.#logTransaction(0, amount);
   }
 }
