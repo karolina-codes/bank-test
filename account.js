@@ -34,7 +34,11 @@ class Account {
   }
 
   withdraw(amount) {
-    this.#logTransaction(0, amount);
+    if (this.balance < amount) {
+      return 'You do not have enough funds for this transaction.';
+    } else {
+      this.#logTransaction(0, amount);
+    }
   }
 }
 

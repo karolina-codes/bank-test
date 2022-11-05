@@ -13,7 +13,7 @@ class AccountInterface {
   }
 
   debit(amount) {
-    this.account.withdraw(amount);
+    return this.account.withdraw(amount);
   }
 
   printStatement() {
